@@ -6,19 +6,20 @@ public class LettersCollection {
 
     private Bitmap[] letters;
 
-    public LettersCollection(Bitmap bitmap, int letterWidth, int letterHeight, int scale) {
+    public LettersCollection(Bitmap bitmap, int letterWidth, int letterHeight, double scale) {
 
         bitmap = Bitmap.createScaledBitmap(
                 bitmap,
-                bitmap.getWidth() * scale,
-                bitmap.getHeight() * scale,
+                bitmap.getWidth() * (int)scale,
+                bitmap.getHeight() * (int)scale,
                 false
         );
 
-        this.createLetters(bitmap, letterWidth * scale, letterHeight * scale);
+        this.createLetters(bitmap, letterWidth * (int)scale, letterHeight * (int)scale,
+                (int)(letterWidth * scale), (int)(letterHeight * scale));
     }
 
-    private void createLetters(Bitmap bitmap, int letterW, int letterH) {
+    private void createLetters(Bitmap bitmap, int letterW, int letterH, int realW, int realH) {
         int bitmapW = bitmap.getWidth();
         int bitmapH = bitmap.getHeight();
 
@@ -30,13 +31,14 @@ public class LettersCollection {
 
         for (int i = 0; i < lettersInRowCount; i++) {
             for (int j = 0; j < lettersInColCount; j++) {
-                letters[j * lettersInRowCount + i] = Bitmap.createBitmap(
+                 Bitmap b = Bitmap.createBitmap(
                         bitmap,
                         i * letterW,
                         j * letterH,
                         letterW,
                         letterH
                 );
+                letters[j * lettersInRowCount + i] = Bitmap.createScaledBitmap(b, realW, realH, true);
             }
         }
     }

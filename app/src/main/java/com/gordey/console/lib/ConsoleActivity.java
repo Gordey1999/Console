@@ -49,11 +49,14 @@ public abstract class ConsoleActivity extends Activity {
         int screenWidth = getWidthPx();
         int screenHeight = getHeightPx();
 
-        int scale = screenWidth / (width * letterWidth);
+        double scale = (double)screenWidth / (width * letterWidth);
+
+        int letterWidthScaled = (int)(letterWidth * scale);
+        int letterHeightScaled = (int)(letterHeight * scale);
 
         LettersCollection letters = new LettersCollection(lettersBitmap, letterWidth, letterHeight, scale);
 
-        int height = screenHeight / (scale * letterHeight);
+        int height = screenHeight / letterHeightScaled;
 
         console = new ConsoleCanvas(letters, width, height, alphabet);
 
