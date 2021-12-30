@@ -2,6 +2,7 @@ package com.gordey.console;
 
 import com.gordey.console.lib.Alphabet;
 import com.gordey.console.lib.ConsoleCanvas;
+import com.gordey.console.lib.ConsoleMotionEvent;
 import com.gordey.console.lib.Object;
 
 public class MainObject extends Object {
@@ -40,5 +41,12 @@ public class MainObject extends Object {
             i = 0;
             j = 0;
         }
+    }
+
+    @Override
+    protected boolean touch(ConsoleMotionEvent event) {
+        System.out.printf("Touch event: %f, %f%n", event.getX(), event.getY());
+
+        return true;
     }
 }

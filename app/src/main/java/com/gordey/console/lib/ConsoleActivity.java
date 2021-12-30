@@ -25,6 +25,7 @@ public abstract class ConsoleActivity extends Activity {
     private int backgroundColor = Color.BLACK;
 
     ConsoleCanvas console = null;
+    ConsoleMotionEvent motionEvent = null;
 
     Rect consoleBitmapRect, consoleDrawRect;
     Paint paint = new Paint();
@@ -62,6 +63,8 @@ public abstract class ConsoleActivity extends Activity {
 
         consoleBitmapRect = new Rect(0, 0, console.getWidthPx(), console.getHeightPx());
         consoleDrawRect = new Rect(0, 0, screenWidth, screenHeight);
+
+        motionEvent = new ConsoleMotionEvent(letterWidthScaled, letterHeightScaled, screenWidth, screenHeight);
 
         fullRedraw();
     }
@@ -113,8 +116,9 @@ public abstract class ConsoleActivity extends Activity {
     }
 
     public boolean onTouch(MotionEvent event) {
+        motionEvent.setEvent(event);
         for (int i = objects.size() - 1; i >= 0; i--) {
-            if (objects.get(i).touch(event))
+            if (objects.get(i).touch(motionEvent))
                 return true;
         }
 

@@ -100,5 +100,5 @@ public abstract class Object {
 
     protected abstract void render(ConsoleCanvas console);
 
-    protected boolean touch(MotionEvent event) { return false; };
+    protected boolean touch(ConsoleMotionEvent event) { return false; };
 }
