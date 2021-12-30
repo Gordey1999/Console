@@ -111,7 +111,7 @@ public class ConsoleCanvas {
                 String style = getLetterStyle(x, y);
                 Bitmap b = letters.get(style)
                         .getLetter(alphabet.getIndex(buffer[y][x]));
-                canvas.drawBitmap(b, rectLetter, rectDrawedLetter, paint);
+                canvas.drawBitmap(b, posX, posY, paint);
             }
         }
 

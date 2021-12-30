@@ -86,7 +86,7 @@ public abstract class ConsoleActivity extends Activity {
 
     final public void addObject(Object obj) {
         created.add(obj);
-        obj.level = this;
+        obj.activity = this;
     }
 
     final public void setBackgroundColor(int color) {

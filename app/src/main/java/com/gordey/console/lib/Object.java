@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 public abstract class Object {
     public Rect position;
     public int depth;
-    public ConsoleActivity level;
+    public ConsoleActivity activity;
 
     public Object() {
         this(0, 0);
@@ -87,8 +87,8 @@ public abstract class Object {
         return depth;
     }
 
-    final public ConsoleActivity getLevel() {
-        return level;
+    final public ConsoleActivity getActivity() {
+        return activity;
     }
 
 
